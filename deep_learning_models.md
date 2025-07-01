@@ -10,7 +10,7 @@ https://github.com/AZFARHAD24511/ML/blob/main/financial_analyses_ML_vf.ipynb
   - **MAE and RMSE** in the billions  
   - Fast training and evaluation times  
 
-
+## Implementation LSTM
 Given this success, we hypothesized that a time‑series model like **LSTM** could harness longer dependencies and deliver even better performance. We then:
 
 1. **Combined multiple lags** (`lag_1` through `lag_5`)  
