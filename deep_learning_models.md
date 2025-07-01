@@ -11,6 +11,24 @@ https://github.com/AZFARHAD24511/ML/blob/main/financial_analyses_ML_vf.ipynb
   - Fast training and evaluation times  
 
 
+Given this success, we hypothesized that a time‑series model like **LSTM** could harness longer dependencies and deliver even better performance. We then:
+
+1. **Combined multiple lags** (`lag_1` through `lag_5`)  
+2. **Added rolling statistics** (`rolling_mean_4`, `rolling_std_4`)  
+3. **Scaled the target** with `log1p` and `PowerTransformer`  
+4. **Increased network depth** (two LSTM layers with 64 and 32 units)  
+5. **Applied Dropout and EarlyStopping** to prevent overfitting  
+
+Despite fully implementing these enhancements and running extensive experiments:
+
+- **Training/Validation Loss** on the log scale showed only minor improvements  
+- **R²** on the original scale: **≈ 0.08**  
+- **RMSE**: roughly 9.1 billion  
+- The LSTM struggled to capture the specific short‑term seasonal patterns, resulting in **underfitting**.
+
+---
+
+
  ```python
 import pandas as pd
 import numpy as np
@@ -179,22 +197,6 @@ RMSE = 9,116,752,142.39
 
 
 
-Given this success, we hypothesized that a time‑series model like **LSTM** could harness longer dependencies and deliver even better performance. We then:
-
-1. **Combined multiple lags** (`lag_1` through `lag_5`)  
-2. **Added rolling statistics** (`rolling_mean_4`, `rolling_std_4`)  
-3. **Scaled the target** with `log1p` and `PowerTransformer`  
-4. **Increased network depth** (two LSTM layers with 64 and 32 units)  
-5. **Applied Dropout and EarlyStopping** to prevent overfitting  
-
-Despite fully implementing these enhancements and running extensive experiments:
-
-- **Training/Validation Loss** on the log scale showed only minor improvements  
-- **R²** on the original scale: **≈ 0.08**  
-- **RMSE**: roughly 9.1 billion  
-- The LSTM struggled to capture the specific short‑term seasonal patterns, resulting in **underfitting**.
-
----
 
 ## Conclusion
 
