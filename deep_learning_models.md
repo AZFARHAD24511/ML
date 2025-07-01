@@ -30,7 +30,7 @@ Despite fully implementing these enhancements and running extensive experiments:
 
 ![Training vs Validation Loss](train_validation.png)
 
-## LSTM pthon code
+## LSTM python code
 
  ```python
 import pandas as pd
