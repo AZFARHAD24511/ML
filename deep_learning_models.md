@@ -1,4 +1,7 @@
-# پروژه پیش‌بینی NetIncomeLoss
+# NetIncomeLoss Prediction Project
+
+
+
  ```python
 import pandas as pd
 import numpy as np
@@ -164,40 +167,38 @@ R²   = 0.084
 
 RMSE = 9,116,752,142.39
 
-در این پروژه ابتدا از **الگوریتم جنگل تصادفی (Random Forest)** برای پیش‌بینی `NetIncomeLoss` استفاده کردیم و به نتایج بسیار خوبی رسیدیم:
 
-- **ویژگی اصلی**: `lag_5` (مقدار درآمد خالص در ۵ دوره‌ی قبلی)  
-- **نتیجه**:  
+We started this project by using a **Random Forest** model to predict `NetIncomeLoss` and achieved excellent results:
+
+- **Key feature**: `lag_5` (NetIncomeLoss value from 5 periods ago)  
+- **Outcome**:  
   - **R² ≈ 0.92**  
-  - **MAE و RMSE** در مقیاس میلیارد  
-  - زمان آموزش و ارزیابی بسیار سریع  
+  - **MAE and RMSE** in the billions  
+  - Fast training and evaluation times  
 
-با این موفقیت، فرض کردیم که مدل‌های سری‌زمانی قوی‌تر مانند **LSTM** بتوانند از وابستگی‌های طولانی‌مدت استفاده کرده و نتایج حتی بهتری بدهند. بنابراین:
+Given this success, we hypothesized that a time‑series model like **LSTM** could harness longer dependencies and deliver even better performance. We then:
 
-1. **ادغام lagهای متعدد** (`lag_1` تا `lag_5`)  
-2. **اضافه کردن ویژگی‌های rolling** (`rolling_mean_4`, `rolling_std_4`)  
-3. **مقیاس‌سازی y با log1p و PowerTransformer**  
-4. **افزایش عمق شبکه** (۲ لایه LSTM با 64 و 32 واحد)  
-5. **استفاده از Dropout و EarlyStopping** برای جلوگیری از overfitting  
+1. **Combined multiple lags** (`lag_1` through `lag_5`)  
+2. **Added rolling statistics** (`rolling_mean_4`, `rolling_std_4`)  
+3. **Scaled the target** with `log1p` and `PowerTransformer`  
+4. **Increased network depth** (two LSTM layers with 64 and 32 units)  
+5. **Applied Dropout and EarlyStopping** to prevent overfitting  
 
-با وجود پیاده‌سازی کامل و انجام آزمون‌های متعدد:
+Despite fully implementing these enhancements and running extensive experiments:
 
-- **Training/Validation Loss** روی مقیاس لگاریتم، بهبود اندکی نشان داد  
-- **R²** روی مقیاس اصلی: **≈ 0.08**  
-- **RMSE**: تقریباً 9.1 میلیارد  
-- مدل LSTM نتوانست وابستگی‌های مالی خاص این داده را به‌خوبی یاد بگیرد و عملاً **underfitting** داشت.
+- **Training/Validation Loss** on the log scale showed only minor improvements  
+- **R²** on the original scale: **≈ 0.08**  
+- **RMSE**: roughly 9.1 billion  
+- The LSTM struggled to capture the specific short‑term seasonal patterns, resulting in **underfitting**.
 
 ---
 
-## نتیجه‌گیری
+## Conclusion
 
-- **جنگل تصادفی** با ویژگی‌های ساده‌ی lag توانست **بیش از 90%** واریانس را در پیش‌بینی `NetIncomeLoss` توضیح دهد.  
-- **LSTM** علیرغم پیچیدگی و پتانسیل تئوری، برای این نوع داده‌های فصلی و مالی کوتاه‌مدت عملکرد ضعیف‌تری داشت.  
-- برخی ساختارهای **پایدار و پراکته‌شده** مثل Random Forest برای این دسته داده‌ها مناسب‌تر هستند و به‌خصوص وقتی که سیگنال از طریق lagهای گذشته به‌خوبی قابل استخراج است.
+- **Random Forest**, using simple lag features, explained over **90%** of the variance in `NetIncomeLoss`.  
+- **LSTM**, despite its theoretical power, underperformed on this type of short‑term, seasonal financial data.  
+- For datasets with large scale, high variance, and short-term seasonal dependencies, **tree‑based models** like Random Forest or XGBoost remain a robust and efficient baseline.
 
-> **پیشنهاد نهایی**:  
-> برای داده‌هایی با مقیاس بزرگ، پراکندگی شدید و وابستگی‌های فصلی کوتاه‌مدت، نگه‌داشتن الگوریتم‌های **درختی** (Random Forest / XGBoost) به‌عنوان baseline و گزینه اصلی پیش‌بینی، ساده و کارا است.  
-> شبکه‌های LSTM و مدل‌های سری‌زمانی پیشرفته را می‌توان برای مسائل دیگر با ساختار بلندمدت و داده‌های پیوسته در نظر گرفت.
->
-
+> **Final Recommendation**  
+> Stick with tree‑based methods for this use case. Reserve LSTM and other deep time‑series architectures for problems with long‑term dependencies and continuous data streams.  
 
