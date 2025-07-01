@@ -26,8 +26,11 @@ Despite fully implementing these enhancements and running extensive experiments:
 - **RMSE**: roughly 9.1 billion  
 - The LSTM struggled to capture the specific short‑term seasonal patterns, resulting in **underfitting**.
 
----
+## Training vs Validation Loss
 
+![Training vs Validation Loss](train_validation.png)
+
+## LSTM pthon code
 
  ```python
 import pandas as pd
