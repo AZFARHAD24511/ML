@@ -1,5 +1,14 @@
 # NetIncomeLoss Prediction Project
 
+We started this project by using a **Random Forest** model to predict `NetIncomeLoss` and achieved excellent results:
+https://github.com/AZFARHAD24511/ML/blob/main/financial_analyses_ML_vf.ipynb
+
+
+- **Key feature**: `lag_5` (NetIncomeLoss value from 5 periods ago)  
+- **Outcome**:  
+  - **R² ≈ 0.92**  
+  - **MAE and RMSE** in the billions  
+  - Fast training and evaluation times  
 
 
  ```python
@@ -168,13 +177,7 @@ R²   = 0.084
 RMSE = 9,116,752,142.39
 
 
-We started this project by using a **Random Forest** model to predict `NetIncomeLoss` and achieved excellent results:
 
-- **Key feature**: `lag_5` (NetIncomeLoss value from 5 periods ago)  
-- **Outcome**:  
-  - **R² ≈ 0.92**  
-  - **MAE and RMSE** in the billions  
-  - Fast training and evaluation times  
 
 Given this success, we hypothesized that a time‑series model like **LSTM** could harness longer dependencies and deliver even better performance. We then:
 
