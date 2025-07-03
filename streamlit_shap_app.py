@@ -30,8 +30,14 @@ if uploaded_file:
     if st.button("Run SHAP Analysis"):
         with st.spinner("Running analysis..."):
 
+            if 'y' not in df_fixed.columns:
+                st.error("❌ Column 'y' not found. Available columns:")
+                st.write(df_fixed.columns.tolist())
+                st.stop()
+            
             X = df_fixed.drop(columns=['y'])
             y = df_fixed['y'].map({'no': 0, 'yes': 1})
+
 
             X_enc = X.copy()
             for col in X_enc.select_dtypes(include=['object']).columns:
