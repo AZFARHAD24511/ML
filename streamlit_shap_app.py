@@ -1,24 +1,27 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
 from sklearn.preprocessing import LabelEncoder
 from sklearn.feature_selection import mutual_info_classif
 from sklearn.ensemble import RandomForestClassifier
 import shap
 import matplotlib.pyplot as plt
 
-st.title("📊 SHAP Analysis - Streamlit Version of Your Original Code")
+st.title("📊 SHAP Analysis - Streamlit Version (Fixed)")
 
 uploaded_file = st.file_uploader("Upload your semicolon-separated CSV file", type=["csv"])
-if uploaded_file:
-    df_fixed = pd.read_csv(
-        uploaded_file,
-        sep=r';(?=(?:[^"]*"[^"]*")*[^"]*$)',
-        engine='python',
-        quotechar='"',
-        encoding='utf-8-sig'
-    )
 
+if uploaded_file:
+    # Read file as text
+    content = uploaded_file.getvalue().decode('utf-8')
+    lines = content.strip().split('\n')
+
+    # Parse header and rows manually
+    header = lines[0].strip().split(';')
+    rows = [line.strip().split(';') for line in lines[1:]]
+
+    df_fixed = pd.DataFrame(rows, columns=header)
+
+    # Clean double quotes from columns and data
     df_fixed.columns = [col.replace('"', '').strip() for col in df_fixed.columns]
     df_fixed = df_fixed.applymap(lambda x: x.replace('"', '').strip() if isinstance(x, str) else x)
 
@@ -34,11 +37,11 @@ if uploaded_file:
                 st.error("❌ Column 'y' not found. Available columns:")
                 st.write(df_fixed.columns.tolist())
                 st.stop()
-            
+
             X = df_fixed.drop(columns=['y'])
             y = df_fixed['y'].map({'no': 0, 'yes': 1})
 
-
+            # Encode categorical features
             X_enc = X.copy()
             for col in X_enc.select_dtypes(include=['object']).columns:
                 X_enc[col] = LabelEncoder().fit_transform(X_enc[col].astype(str))
