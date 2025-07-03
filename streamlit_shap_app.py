@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 st.title("📊 SHAP Analysis - Streamlit Version (Fixed)")
 st.markdown("---")
 st.markdown("---")
+st.markdown("---")
 st.info("""
 ### Citation / Reference
 
@@ -21,12 +22,11 @@ The data used in this software was obtained from:
 
 Moro, S., Rita, P., & Cortez, P. (2014). Bank Marketing [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C5K306
 
+---
 
-Farhadi, A. (2025). SHAP Analysis Tool for Bank Marketing Data (Version 1.0) [Software]. https://github.com/AZFARHAD24511/ML
-
-Moro, S., Rita, P., & Cortez, P. (2014). Bank Marketing [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C5K306
-file name is "bank-additional.csv"
+**Important:** Please upload the dataset file named **bank-additional.csv** in the upload step above to run the analysis.
 """)
+
 
 
 uploaded_file = st.file_uploader("Upload your semicolon-separated CSV file", type=["csv"])
