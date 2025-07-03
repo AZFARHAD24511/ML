@@ -83,11 +83,9 @@ A **Random Forest** is an ensemble of decision trees:
 
 Given features $X$ and labels $y$, the model approximates:
 
-$$
-\hat{y} = \text{majority_vote} \left( T_1(X), T_2(X), \dots, T_n(X) \right)
-$$
+$$\hat{y} = mv \left( T_1(X), T_2(X), \dots, T_n(X) \right)$$
 
-Each $T_i$ is a decision tree trained on a bootstrap sample.
+$$mv$$ is majority vote and Each $T_i$ is a decision tree trained on a bootstrap sample.
 
 ---
 
