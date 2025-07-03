@@ -65,4 +65,10 @@ if uploaded_file:
             else:
                 st.warning("'duration' column not found.")
 
-st.markdown(\"\"\"\n---\n<p style='text-align:center; font-size:small;'>\nThis software was developed by Dr. Farhadi, PhD in Econometrics and Data Science. For any personal or commercial use, please cite the author.\n</p>\n\"\"\", unsafe_allow_html=True)
+st.markdown("""
+---
+<p style='text-align:center; font-size:small;'>
+This software was developed by Dr. Farhadi, PhD in Econometrics and Data Science.
+For any personal or commercial use, please cite the author.
+</p>
+""", unsafe_allow_html=True)
