@@ -16,7 +16,6 @@ If you use this software in your research or projects, please cite it as:
 Farhadi, A. (2025). *SHAP Analysis Tool for Bank Marketing Data* [Software]. Developed by Dr. A. Farhadi, PhD in Econometrics and Data Science.  
 Available at: https://github.com/AZFARHAD24511/ML
 
-**Example APA format:**  
 Farhadi, A. (2025). SHAP Analysis Tool for Bank Marketing Data (Version 1.0) [Software]. https://github.com/AZFARHAD24511/ML
 """)
 
