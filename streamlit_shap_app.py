@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 
 st.title("📊 SHAP Analysis - Streamlit Version (Fixed)")
 st.markdown("---")
+st.markdown("---")
 st.info("""
 ### Citation / Reference
 
@@ -16,8 +17,16 @@ If you use this software in your research or projects, please cite it as:
 Farhadi, A. (2025). *SHAP Analysis Tool for Bank Marketing Data* [Software]. Developed by Dr. A. Farhadi, PhD in Econometrics and Data Science.  
 Available at: https://github.com/AZFARHAD24511/ML
 
+The data used in this software was obtained from:
+
+Moro, S., Rita, P., & Cortez, P. (2014). Bank Marketing [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C5K306
+
+
 Farhadi, A. (2025). SHAP Analysis Tool for Bank Marketing Data (Version 1.0) [Software]. https://github.com/AZFARHAD24511/ML
+
+Moro, S., Rita, P., & Cortez, P. (2014). Bank Marketing [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C5K306
 """)
+
 
 uploaded_file = st.file_uploader("Upload your semicolon-separated CSV file", type=["csv"])
 
