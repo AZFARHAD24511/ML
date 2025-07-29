@@ -1,7 +1,7 @@
 # NetIncomeLoss Prediction Project
 
 We started this project by using a **Random Forest** model to predict `NetIncomeLoss` and achieved excellent results:
-https://github.com/AZFARHAD24511/ML/blob/main/financial_analyses_ML_vf.ipynb
+https://github.com/AZFARHAD24511/ML_DL/blob/main/ML/financial_analyses_ML_vf.ipynb
 
 
 - **Key feature**: `lag_5` (NetIncomeLoss value from 5 periods ago)  
